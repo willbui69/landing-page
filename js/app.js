@@ -69,3 +69,16 @@ document.addEventListener('scroll', function() {
         }
     }
 })
+
+// *** SCROLL THE PAGE TO APPROPRIATE SECTIONS ***
+
+const sectionLinks = document.querySelectorAll('#naviItem');
+for (let i = 0; i < sectionLinks.length; i++) {
+    // Prevent the link from opening the section
+    sectionLinks[i].addEventListener("click", (event)=> event.preventDefault())
+    // Move to the section when naviitem cliked
+    sectionLinks[i].addEventListener('click', () => {
+        const sect = document.getElementById(`section${i + 1}`);
+        sect.scrollIntoView();
+    })
+}
