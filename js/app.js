@@ -17,7 +17,7 @@ const ulElement = document.querySelector('ul');
 
 // Create four li tags equivalent to four sections
 for (let i=1; i<=4; i++) {
-    const htmlSectionToAdd = `<li> <a href="#section${i}">Section ${i} </a> </li>`;
+    const htmlSectionToAdd = `<li> <a class="naviItem" href="#section${i}">Section ${i} </a> </li>`;
     ulElement.insertAdjacentHTML("beforeend", htmlSectionToAdd);
 }
 
@@ -38,7 +38,7 @@ function removeActive() {
 
 // Add active class to new clicked item
 for (let i = 0; i < naviItems.length; i++) {
-    naviItems[i].addEventListener('click', function() {
+    naviItems[i].addEventListener('click', () => {
         removeActive();
         naviItems[i].classList.add('active');
     })
@@ -55,7 +55,7 @@ function isInViewPort(sect) {
 }
 
 // Apply active state on the current section and the corresponding Nav link
-document.addEventListener('scroll', function() {
+document.addEventListener('scroll', () => {
     sections = document.querySelectorAll('section');
     const currentActiveSection = document.querySelector('section.your-active-class');
     for (let i = 0; i < sections.length; i++) {
@@ -72,7 +72,7 @@ document.addEventListener('scroll', function() {
 
 // *** SCROLL THE PAGE TO APPROPRIATE SECTIONS ***
 
-const sectionLinks = document.querySelectorAll('#naviItem');
+const sectionLinks = document.querySelectorAll('.naviItem');
 for (let i = 0; i < sectionLinks.length; i++) {
     // Prevent the link from opening the section
     sectionLinks[i].addEventListener("click", (event)=> event.preventDefault())
